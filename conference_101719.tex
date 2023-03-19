@@ -40,22 +40,53 @@ component, formatting, style, styling, insert
 \end{IEEEkeywords}
 
 \section{Aims and Objectives}
-define the scope of your project
 
-% 一句话简介（Aim）：用某种通讯领域的时分多址（TDMA）技术实现多个agent之间的去中心化自组织以及彼此之间有限资源的共享。用ROS2对设计的控制策略进行仿真模拟，验证控制效果。
+% 原则：用方法X对应用Z进行改变Y。一定要具体。
+
+% 一句话简介：基于STDMA通信协议的自组织信道分配原理，实现一种多机器人间的自组织路径规划。
+% Aim复杂版：用某种通讯领域的时分多址（TDMA）技术实现多个简单agent之间的去中心化自组织以及彼此之间有限资源（如作业空间中的某些路径）的共享。用ROS2对设计的控制策略进行仿真模拟，验证控制效果。
 % 详细解释（Objectives）：一般要3-6个。
 % 1. 在ROS2环境下用STDMA（此处引用）技术实现多个agent之间的通讯自组织
 % 2. 设计一套基于STDMA思想的去中心化自组织资源分配策略。并设计合适的资源分配情境。
 % 3. 在ROS2环境下实现2中提到的算法与仿真情境。通过仿真验证控制效果
-% 4. 基于仿真效果提升算法表现和性能。
+% 4. 基于仿真效果提升算法表现和性能。（性能问题：和谁去比较呢？）
+
+\textbf{Aim}:
+Based on the self-organising channel resource allocation principle of the STDMA(Self-organised Time 
+ Division Multiple Access) communication protocol [], develop a decentralised self-organised scalable path planning method between multiple agents in a 2D plane. 
     
+\textbf{Objectives}:
+\begin{itemize}
+    \item Simulate a multi-agent communication scenario using ROS2 and its nodes. In this scenario, multiple identical agents will share the same channel and all agents have both receiving and transmitting capabilities.
+    % 使用ROS2与其node实现多agent的通信场景模拟。在此场景中，多个相同的agent将共享同一个信道，且agent都具有收发功能。
+    \item In the above environment, use STDMA to achieve self-organised multi-agent communication. The goal is to enable agents to autonomously organize/join the communication process after startup.
+    % 在上述环境下藉由STDMA实现多agent的通信自组织，目标是使agent之间能够在开机后自主地组织/加入通信过程。
+    \item On the basis of the above, a simple two-dimensional map navigation scenario is implemented: a two-dimensional map composed of grids, each grid representing a part of space. Agents would move from one grid to another on the map. The shape of the grid is not limited to square [], and further research is needed to determine this later.
+    % 在上述基础上实现简单的二维地图导航情景：一张由若干网格组成的二维地图，每一个网格代表空间的一部分。agent的运动就是在地图中从一个格子移动到另一个格子。格子的形状不仅限于四边形[]，这里需要后续进一步研究确定。
+    \item Using the principle of STDMA to implement simple decentralized conflict-free path planning and simulate implementation in the above scenario.
+    % 用STDMA的原理实现简单的去中心化无冲突路径规划，并在上述场景中模拟实现。
+    \item Observe the simulation results and optimize based on the simulation results: Directly applying the original version of STDMA to the above scenario will definitely lead to low efficiency or deadlock [] in some cases. I will adjust the algorithm according to the simulation results and optimize the performance of the algorithm. 
+    % 观察模拟结果，并根据模拟结果进行优化：直接将原版STDMA应用于上述场景肯定会导致一些情况下的低效率或者死锁[]。我将根据模拟的结果调整算法，优化算法的表现。
+    \item Select appropriate performance metrics, compare with other methods in the field [], and evaluate the advantages and disadvantages of algorithm performance. 
+    % 选取合适的性能指标，与领域中的其他方法比较，评判算法性能的优劣。
+\end{itemize}
 
 
 \section{Motivation}
 establish the need for your project
+%几个灵魂问题：
+% 1. 你的研究重要在哪儿？
+% 2. 为什么应用需要此种改变？
+% 3. 为什么你的方法能带来这种改变？
+% 4. 难在哪儿？
+% 5. 创新在哪儿？
+% 6. 为什么是你？
 
 \section{Literature Review}
 evaluate the relevant state-of-the-art
+
+% 别人论文里的小技巧
+% 1. 描述应用前景的时候可以塞论文进去（论多机器人集群对小行星开发的研究前景之类的）
 
 \section{Impact Assessment}
 consider potential social, environmental, economic, political, legal or ethical implications
