@@ -29,15 +29,7 @@ Student ID:  2217498\\
 
 \maketitle
 
-\begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
-\end{abstract}
 
-\begin{IEEEkeywords}
-component, formatting, style, styling, insert
-\end{IEEEkeywords}
 
 \section{Aims and Objectives}
 
@@ -52,28 +44,29 @@ component, formatting, style, styling, insert
 % 4. 基于仿真效果提升算法表现和性能。（性能问题：和谁去比较呢？）
 
 \textbf{Aim}:
-Based on the self-organising channel resource allocation principle of the STDMA(Self-organised Time 
- Division Multiple Access) communication protocol [], develop a decentralised self-organised scalable path planning method between multiple agents in a 2D plane. 
+
+
+ % 利用STDMA的原理实现一种MARA方法，使其做到去中心化且可缩放。
+
+Based on the self-organised channel resource allocation principle of the STDMA(Self-organised Time Division Multiple Access) \cite{STDMA} communication protocol, develop a multi agent resource sharing (MARA) \cite{MARA_Overview1} method, and make it self-organised, decentralised and scalable. 
     
 \textbf{Objectives}:
 \begin{itemize}
-    \item Simulate a multi-agent communication scenario using ROS2 and its nodes. In this scenario, multiple identical agents will share the same channel and all agents have both receiving and transmitting capabilities.
-    % 使用ROS2与其node实现多agent的通信场景模拟。在此场景中，多个相同的agent将共享同一个信道，且agent都具有收发功能。
-    \item In the above environment, use STDMA to achieve self-organised multi-agent communication. The goal is to enable agents to autonomously organize/join the communication process after startup.
-    % 在上述环境下藉由STDMA实现多agent的通信自组织，目标是使agent之间能够在开机后自主地组织/加入通信过程。
-    \item On the basis of the above, a simple two-dimensional map navigation scenario is implemented: a two-dimensional map composed of grids, each grid representing a part of space. Agents would move from one grid to another on the map. The shape of the grid is not limited to square [], and further research is needed to determine this later.
+    \item Develop a multi agent communication scenario with STDMA in ROS2. In this scenario, multiple identical agents will share the same channel and all agents have both receiving and transmitting capabilities. The goal is to enable agents to autonomously organise/join the communication process after start up.
+    % 使用ROS2与其node实现多agent的通信场景模拟。在此场景中，多个相同的agent将共享同一个信道，且agent都具有收发功能，agents应当能自动地组织/在开机后加入通信过程。目标是使agent能够在开机后自主地组织/加入通信过程。
+    \item On the basis above, a simple two-dimensional map is implemented: a two-dimensional map composed of grids, each grid representing a part of space. Agents would move from one grid to another on the map.
     % 在上述基础上实现简单的二维地图导航情景：一张由若干网格组成的二维地图，每一个网格代表空间的一部分。agent的运动就是在地图中从一个格子移动到另一个格子。格子的形状不仅限于四边形[]，这里需要后续进一步研究确定。
-    \item Using the principle of STDMA to implement simple decentralized conflict-free path planning and simulate implementation in the above scenario.
-    % 用STDMA的原理实现简单的去中心化无冲突路径规划，并在上述场景中模拟实现。
-    \item Observe the simulation results and optimize based on the simulation results: Directly applying the original version of STDMA to the above scenario will definitely lead to low efficiency or deadlock [] in some cases. I will adjust the algorithm according to the simulation results and optimize the performance of the algorithm. 
-    % 观察模拟结果，并根据模拟结果进行优化：直接将原版STDMA应用于上述场景肯定会导致一些情况下的低效率或者死锁[]。我将根据模拟的结果调整算法，优化算法的表现。
-    \item Select appropriate performance metrics, compare with other methods in the field [], and evaluate the advantages and disadvantages of algorithm performance. 
-    % 选取合适的性能指标，与领域中的其他方法比较，评判算法性能的优劣。
+    \item Using the principle of STDMA \cite{STDMA} to implement simple decentralized conflict-free space(which is a kind of resource) sharing and simulate implementation in the above scenario.
+    % 用STDMA的原理实现简单的去中心化无冲突空间（其也是某种资源）分享，并在上述场景中模拟实现。
+    \item STDMA is designed for 1D resource sharing (slots in time frames), and directly applying STDMA for 2D space sharing will definitely lead to some deadlock and inefficient scenarios\cite{MAPF_Deadlock_Explain1}\cite{MAPF_Deadlock_Explain2}. Determine the cause of this problem by observing the experiment, and make corresponding improvements to this problem, improve the performance of the algorithm. 
+    % 直接套用STDMA一定会导致某种死锁和低效的场景发生[]。通过实验模拟定位此类场景发生的原因并进行改进，设计一些资源分享中的规则，并提升算法的表现。
+    \item Select appropriate performance metrics (makespan, sum/average of path length, number of conflicts, etc.) to evaluate the advantages and disadvantages of algorithm performance. 
+    % 选取合适的性能指标，评判算法性能的优劣。
 \end{itemize}
 
 
 \section{Motivation}
-establish the need for your project
+
 %几个灵魂问题：
 % 1. 你的研究重要在哪儿？
 % 2. 为什么应用需要此种改变？
@@ -81,6 +74,23 @@ establish the need for your project
 % 4. 难在哪儿？
 % 5. 创新在哪儿？
 % 6. 为什么是你？
+
+% 为什么用STDMA进行去中心化MAPF？
+    % 为什么MAPF？
+    % 为什么去中心化？
+    % 为什么STDMA？
+
+% 为什么用STDMA的原则进行去中心化MAPF？
+\textbf{Why use STDMA principles for decentralised MARA(Multi Agent Resource Sharing)?}
+\begin{itemize}
+    \item Why MARA?\\
+
+    \item Why decentralised?\\
+    1
+    11
+    \item Why STDMA?\\
+    11
+\end{itemize}
 
 \section{Literature Review}
 evaluate the relevant state-of-the-art
@@ -299,17 +309,12 @@ element symbols.
 For papers published in translation journals, please give the English 
 citation first, followed by the original foreign-language citation \cite{b6}.
 
-\begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-\end{thebibliography}
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+\bibliographystyle{plain}
+
+\cite{STDMA}
+\cite{MAPF_Overview1}
+\cite{Decentralized_Overview1}
+
+\bibliography{ref}
 
 \end{document}
